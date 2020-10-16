@@ -1,23 +1,74 @@
-print("* DvNET Marcrypto v0.7 Test-Build-0617")
-print("* (c) 2020 DvNET Foundation. All rights reserved.")
+import time
+print("* DvNET Marcrypto v0.8 Build 1016")
+time.sleep(1)
+print("* (c) 2020 DvNET Technologies. All rights reserved.")
+time.sleep(2)
+print()
 
 
+#MAIN FUNCTION
 def Main():
+    print()
+    print("*** MAIN MENU ***")
+    print()
+    print("1. Data Encrypt")
+    print("2. Data Decrypt")
+    print()
+    print("*****************")
+    print()
+    u = input("Enter your choice [1/2]: ")
+    if u == "1":
+        Encrypt()
+    elif u == "2":
+        Decrypt()
+    Main()
+
+
+#MAIN ENCRYPT
+def Encrypt():
+    print()
+    print("*** DATA ENCRYPT ***")
     print()
     sin = input("Enter the text to encrypt: ")
     encrypto_dat = Encrypto(sin)
     print(encrypto_dat)
-    TextWr('data.txt', encrypto_dat, 'w+')
+    print()
+    u = input("Do you want save that to a textfile [y/n] : ")
+    if u == "y":
+        try:
+            TextWr('data.txt', encrypto_dat, 'w+')
+        except IOError:
+            print("'data.txt' is doesn't exist!")
+        else:
+            print("Saved successfully!")
+    Main()
+
+#MAIN DECRYPT
+def Decrypt():
+    print()
+    print("*** DATA DECRYPT ***")
     print()
     sim = input("Enter to decrypt the text: ")
     if sim == "":
-        decrypto_dat = Decrypto(TextRd('data.txt'))
-        print(decrypto_dat)
-        TextWr('data.txt', decrypto_dat, 'w')
-    else:
-        print(Decrypto(sim))
+        try:
+            decrypto_dat = Decrypto(TextRd('data.txt'))
+        except IOError:
+            print("'data.txt' is doesn't exist!")
+        else:
+            print()
+            print(decrypto_dat)
+            print()
+            u = input("Do you want save that to a textfile [y/n] : ")
+            if u == "y":
+                try:
+                    TextWr('data.txt', decrypto_dat, 'w')
+                except IOError:
+                    print("'data.txt' is doesn't exist!")
+                else:
+                    print("Saved successfully!")
+            else:   
+                print(Decrypto(sim))
     Main()
-
 
 def Encrypto(src):
     # Character Enrypting
@@ -109,6 +160,7 @@ def Decrypto(encr):
     return decr
 
 
+#data READER
 def TextRd(src):
     Opile = open(src, 'r')
     Data = Opile.read()
@@ -116,6 +168,7 @@ def TextRd(src):
     return Data
 
 
+#data WRITER
 def TextWr(scf, stg, tp):
     try:
         wtext = str(stg)
