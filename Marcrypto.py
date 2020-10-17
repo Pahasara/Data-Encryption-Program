@@ -1,13 +1,13 @@
 import time
-print("* DvNET Marcrypto v0.8 Build 1016")
+print("* DvNET Marcrypto v0.8 Build 1017")
 time.sleep(1)
 print("* (c) 2020 DvNET Technologies. All rights reserved.")
-time.sleep(2)
 print()
 
 
 #MAIN FUNCTION
 def Main():
+    time.sleep(2)
     print()
     print("*** MAIN MENU ***")
     print()
@@ -16,6 +16,7 @@ def Main():
     print()
     print("*****************")
     print()
+    time.sleep(0.5)
     u = input("Enter your choice [1/2]: ")
     if u == "1":
         Encrypt()
